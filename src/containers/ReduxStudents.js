@@ -5,7 +5,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
 // Get our actions...
-import SelectStudent from '../actions/SelectStudentAction';
+import SelectStudentAction from '../actions/SelectStudentAction';
 // console.log(SelectStudent)
 
 // bindActionCreators is a redux function that we will tap into to let ALL reducers know anytime an action occured
@@ -53,7 +53,7 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
 	// bindActionCreators came from above
 	return bindActionCreators({
-		selectStudent: SelectStudent
+		selectStudent: SelectStudentAction
 	}, dispatch)
 }
 

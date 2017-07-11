@@ -5,7 +5,8 @@
 var SelectStudentAction = function(student){
 	console.log(student);
 	return{
-		type: "PICK_STUDENT"
+		type: "PICK_STUDENT",
+		payload: student
 	}
 }
 

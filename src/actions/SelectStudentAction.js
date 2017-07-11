@@ -3,7 +3,7 @@
 // This is similar to components, that MUST have a render function
 
 var SelectStudentAction = function(student){
-	console.log(student);
+	// console.log(student);
 	return{
 		type: "PICK_STUDENT",
 		payload: student

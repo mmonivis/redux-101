@@ -7,13 +7,24 @@ import { connect } from 'react-redux';
 // Get our actions...
 import SelectStudentAction from '../actions/SelectStudentAction';
 // console.log(SelectStudent)
+import Timer from '../actions/TimerAction';
 
 // bindActionCreators is a redux function that we will tap into to let ALL reducers know anytime an action occured
 import { bindActionCreators } from 'redux';
 
 class ReduxStudents extends Component{
+	constructor(props) {
+		super(props);	
+	}
+
+	componentDidMount() {
+		setInterval(()=>{
+			this.props.timerAction();
+		},1000)
+	}
+
 	render(){
-		console.log(this.props.students)
+		// console.log(this.props.students)
 		var studentArray = [];
 		this.props.students.map((student,index)=>{
 			studentArray.push(
@@ -30,6 +41,8 @@ class ReduxStudents extends Component{
 				{studentArray}
 				<hr />
 				{this.props.selectedStudent} is selected.
+				<hr />
+				{this.props.timer} is the apps current time.
 			</div>
 		)
 	}
@@ -44,7 +57,8 @@ function mapStateToProps(state){
 		// Inside of that state object, we have a property: students
 		// This exists because we made it a property in the rootReducer
 		students: state.students,
-		selectedStudent: state.selectedStudent
+		selectedStudent: state.selectedStudent,
+		timer: state.timer
 	}
 
 }
@@ -53,7 +67,8 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
 	// bindActionCreators came from above
 	return bindActionCreators({
-		selectStudent: SelectStudentAction
+		selectStudent: SelectStudentAction,
+		timerAction: Timer
 	}, dispatch)
 }
 
